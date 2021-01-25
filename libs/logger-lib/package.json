@@ -1,0 +1,15 @@
+{
+  "name": "@flight-workspace/logger-lib",
+  "version": "35.0.1",
+  "peerDependencies": {
+    "@angular/common": ">= 9.0.0 <12.0.0",
+    "@angular/core": ">= 9.0.0 <12.0.0"
+  },
+  "description": "best logger lib ever!",
+  "author": {"name": "ich", "email": "ich@home.at"},
+  "repository": {
+    "directory": "url/url",
+    "type": "git",
+    "url": "http://github.com/msteyer"
+  }
+}
