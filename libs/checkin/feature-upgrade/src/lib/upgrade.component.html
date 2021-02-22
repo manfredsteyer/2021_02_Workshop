@@ -1,0 +1,9 @@
+<h1>checkin-upgrade</h1>
+
+<table class="table">
+    <tr *ngFor="let upgradeOffer of upgradeOfferList$ | async">
+        <td>{{upgradeOffer.id}}</td>
+        <td>{{upgradeOffer.name}}</td>
+        <td>{{upgradeOffer.description}}</td>
+    </tr>
+</table>

@@ -25,6 +25,25 @@
       ],
       "@flight-workspace/luggage/feature-report-loss": [
         "libs/luggage/feature-report-loss/src/index.ts"
+      ],
+      "@flight-workspace/boarding/domain": [
+        "libs/boarding/domain/src/index.ts"
+      ],
+      "@flight-workspace/boarding/feature-manage": [
+        "libs/boarding/feature-manage/src/index.ts"
+      ],
+      "@flight-workspace/checkin/domain": ["libs/checkin/domain/src/index.ts"],
+      "@flight-workspace/checkin/feature-manage": [
+        "libs/checkin/feature-manage/src/index.ts"
+      ],
+      "@flight-workspace/checkin/feature-upgrade": [
+        "libs/checkin/feature-upgrade/src/index.ts"
+      ],
+      "@flight-workspace/checkin2/domain": [
+        "libs/checkin2/domain/src/index.ts"
+      ],
+      "@flight-workspace/checkin2/feature-upgrade": [
+        "libs/checkin2/feature-upgrade/src/index.ts"
       ]
     }
   },

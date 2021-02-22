@@ -800,6 +800,678 @@
           "style": "scss"
         }
       }
+    },
+    "boarding-domain": {
+      "projectType": "library",
+      "root": "libs/boarding/domain",
+      "sourceRoot": "libs/boarding/domain/src",
+      "prefix": "boarding",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/boarding/domain/tsconfig.lib.json",
+            "project": "libs/boarding/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/boarding/domain/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/boarding/domain/tsconfig.lib.json",
+              "libs/boarding/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/boarding/domain/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/boarding/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "boarding": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/boarding",
+      "sourceRoot": "apps/boarding/src",
+      "prefix": "flight-workspace",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/boarding",
+            "index": "apps/boarding/src/index.html",
+            "main": "apps/boarding/src/main.ts",
+            "polyfills": "apps/boarding/src/polyfills.ts",
+            "tsConfig": "apps/boarding/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/boarding/src/favicon.ico",
+              "apps/boarding/src/assets"
+            ],
+            "styles": ["apps/boarding/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/boarding/src/environments/environment.ts",
+                  "with": "apps/boarding/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "boarding:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "boarding:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "boarding:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/boarding/tsconfig.app.json",
+              "apps/boarding/tsconfig.spec.json",
+              "apps/boarding/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/boarding/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/boarding/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "boarding-e2e": {
+      "root": "apps/boarding-e2e",
+      "sourceRoot": "apps/boarding-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/boarding-e2e/cypress.json",
+            "tsConfig": "apps/boarding-e2e/tsconfig.e2e.json",
+            "devServerTarget": "boarding:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "boarding:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/boarding-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/boarding-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "boarding-feature-manage": {
+      "projectType": "library",
+      "root": "libs/boarding/feature-manage",
+      "sourceRoot": "libs/boarding/feature-manage/src",
+      "prefix": "boarding",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/boarding/feature-manage/tsconfig.lib.json",
+            "project": "libs/boarding/feature-manage/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/boarding/feature-manage/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/boarding/feature-manage/tsconfig.lib.json",
+              "libs/boarding/feature-manage/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/boarding/feature-manage/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/boarding/feature-manage/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "checkin-domain": {
+      "projectType": "library",
+      "root": "libs/checkin/domain",
+      "sourceRoot": "libs/checkin/domain/src",
+      "prefix": "checkin",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/checkin/domain/tsconfig.lib.json",
+            "project": "libs/checkin/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin/domain/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/checkin/domain/tsconfig.lib.json",
+              "libs/checkin/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/checkin/domain/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/checkin/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "checkin": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/checkin",
+      "sourceRoot": "apps/checkin/src",
+      "prefix": "flight-workspace",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/checkin",
+            "index": "apps/checkin/src/index.html",
+            "main": "apps/checkin/src/main.ts",
+            "polyfills": "apps/checkin/src/polyfills.ts",
+            "tsConfig": "apps/checkin/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/checkin/src/favicon.ico",
+              "apps/checkin/src/assets"
+            ],
+            "styles": ["apps/checkin/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/checkin/src/environments/environment.ts",
+                  "with": "apps/checkin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "checkin:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "checkin:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "checkin:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/checkin/tsconfig.app.json",
+              "apps/checkin/tsconfig.spec.json",
+              "apps/checkin/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/checkin/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/checkin/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "checkin-e2e": {
+      "root": "apps/checkin-e2e",
+      "sourceRoot": "apps/checkin-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/checkin-e2e/cypress.json",
+            "tsConfig": "apps/checkin-e2e/tsconfig.e2e.json",
+            "devServerTarget": "checkin:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "checkin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/checkin-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/checkin-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "checkin-feature-manage": {
+      "projectType": "library",
+      "root": "libs/checkin/feature-manage",
+      "sourceRoot": "libs/checkin/feature-manage/src",
+      "prefix": "checkin",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/checkin/feature-manage/tsconfig.lib.json",
+            "project": "libs/checkin/feature-manage/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin/feature-manage/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/checkin/feature-manage/tsconfig.lib.json",
+              "libs/checkin/feature-manage/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/checkin/feature-manage/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/checkin/feature-manage/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "checkin-feature-upgrade": {
+      "projectType": "library",
+      "root": "libs/checkin/feature-upgrade",
+      "sourceRoot": "libs/checkin/feature-upgrade/src",
+      "prefix": "checkin",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/checkin/feature-upgrade/tsconfig.lib.json",
+            "project": "libs/checkin/feature-upgrade/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin/feature-upgrade/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/checkin/feature-upgrade/tsconfig.lib.json",
+              "libs/checkin/feature-upgrade/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/checkin/feature-upgrade/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/checkin/feature-upgrade/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "checkin2-domain": {
+      "projectType": "library",
+      "root": "libs/checkin2/domain",
+      "sourceRoot": "libs/checkin2/domain/src",
+      "prefix": "checkin2",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/checkin2/domain/tsconfig.lib.json",
+            "project": "libs/checkin2/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin2/domain/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/checkin2/domain/tsconfig.lib.json",
+              "libs/checkin2/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/checkin2/domain/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/checkin2/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "checkin2": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/checkin2",
+      "sourceRoot": "apps/checkin2/src",
+      "prefix": "flight-workspace",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/checkin2",
+            "index": "apps/checkin2/src/index.html",
+            "main": "apps/checkin2/src/main.ts",
+            "polyfills": "apps/checkin2/src/polyfills.ts",
+            "tsConfig": "apps/checkin2/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/checkin2/src/favicon.ico",
+              "apps/checkin2/src/assets"
+            ],
+            "styles": ["apps/checkin2/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/checkin2/src/environments/environment.ts",
+                  "with": "apps/checkin2/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "checkin2:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "checkin2:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "checkin2:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/checkin2/tsconfig.app.json",
+              "apps/checkin2/tsconfig.spec.json",
+              "apps/checkin2/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/checkin2/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/checkin2/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "checkin2-e2e": {
+      "root": "apps/checkin2-e2e",
+      "sourceRoot": "apps/checkin2-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/checkin2-e2e/cypress.json",
+            "tsConfig": "apps/checkin2-e2e/tsconfig.e2e.json",
+            "devServerTarget": "checkin2:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "checkin2:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/checkin2-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/checkin2-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "checkin2-feature-upgrade": {
+      "projectType": "library",
+      "root": "libs/checkin2/feature-upgrade",
+      "sourceRoot": "libs/checkin2/feature-upgrade/src",
+      "prefix": "checkin2",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/checkin2/feature-upgrade/tsconfig.lib.json",
+            "project": "libs/checkin2/feature-upgrade/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/checkin2/feature-upgrade/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/checkin2/feature-upgrade/tsconfig.lib.json",
+              "libs/checkin2/feature-upgrade/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/checkin2/feature-upgrade/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/checkin2/feature-upgrade/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

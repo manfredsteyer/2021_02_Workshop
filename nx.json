@@ -56,6 +56,48 @@
     },
     "luggage-feature-report-loss": {
       "tags": ["domain:luggage", "type:feature"]
+    },
+    "boarding-domain": {
+      "tags": ["domain:boarding", "type:domain-logic"]
+    },
+    "boarding": {
+      "tags": ["domain:boarding", "type:app"]
+    },
+    "boarding-e2e": {
+      "tags": [],
+      "implicitDependencies": ["boarding"]
+    },
+    "boarding-feature-manage": {
+      "tags": ["domain:boarding", "type:feature"]
+    },
+    "checkin-domain": {
+      "tags": ["domain:checkin", "type:domain-logic"]
+    },
+    "checkin": {
+      "tags": ["domain:checkin", "type:app"]
+    },
+    "checkin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["checkin"]
+    },
+    "checkin-feature-manage": {
+      "tags": ["domain:checkin", "type:feature"]
+    },
+    "checkin-feature-upgrade": {
+      "tags": ["domain:checkin", "type:feature"]
+    },
+    "checkin2-domain": {
+      "tags": ["domain:checkin2", "type:domain-logic"]
+    },
+    "checkin2": {
+      "tags": ["domain:checkin2", "type:app"]
+    },
+    "checkin2-e2e": {
+      "tags": [],
+      "implicitDependencies": ["checkin2"]
+    },
+    "checkin2-feature-upgrade": {
+      "tags": ["domain:checkin2", "type:feature"]
     }
   },
   "tasksRunnerOptions": {
